@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root {
+  --bg: #F3EDE5;
+  --card-bg: #FFFFFF;
+  --accent: #C1440E;
+  --accent-hover: #E86A33;
+  --text: #3E3A39;
+  --subtle: #A89F91;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background-color: var(--card-bg);
+  border-bottom: 2px solid var(--accent);
+  padding: 1rem 2rem;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+input[type="color"] {
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.menu {
+  background-color: var(--card-bg);
+  border-right: 1px solid var(--subtle);
+  padding: 2rem 1rem;
+  width: 240px;
+}
+
+.menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover,
+.menu a.current {
+  background-color: #f7f4f0;
+  border-left: 4px solid var(--accent);
+}
+
+.menu .user {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.responsive-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .responsive-menu {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .wrapper {
+    display: block;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.display {
+  flex: 1;
+  padding: 2rem;
+}
+
+.display .search {
+  margin-bottom: 2rem;
+}
+
+.display h2 {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid var(--subtle);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid var(--subtle);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+button {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--accent-hover);
+}
+
+.saved-recipe-cards,
+.search-recipe-cards,
+.view-recipe-card {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.saved-recipe-cards .card,
+.search-recipe-cards .card,
+.view-recipe-card .card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--subtle);
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.saved-recipe-cards .card:hover,
+.search-recipe-cards .card:hover,
+.view-recipe-card .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.saved-recipe-cards .card-img,
+.search-recipe-cards .card-img,
+.view-recipe-card .card-img {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+
+.saved-recipe-cards .card-body,
+.search-recipe-cards .card-body,
+.view-recipe-card .card-body {
+  padding: 1rem;
+}
+
+.saved-recipe-cards .card-body h3,
+.search-recipe-cards .card-body h3,
+.view-recipe-card .card-body h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.saved-recipe-cards .card-body p,
+.search-recipe-cards .card-body p,
+.view-recipe-card .card-body p {
+  font-size: 0.9rem;
+  color: var(--subtle);
+  margin-bottom: 1rem;
+}
+
+#snackbar-success {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar-success.show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
